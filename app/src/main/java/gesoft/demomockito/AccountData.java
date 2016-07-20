@@ -1,11 +1,15 @@
 package gesoft.demomockito;
 
+import android.util.Log;
+
 /**
- * Created by Administrator on 2016/7/20.
+ * Created by yhr on 2016/7/20.
  */
 
 public class AccountData {
+
     private boolean isLogin;
+
     private String userName;
 
     public boolean isLogin() {
@@ -23,4 +27,15 @@ public class AccountData {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+    public String log(String tag, String msg){
+        System.out.println("this is "+tag);
+        return "tag="+tag+", msg="+msg;
+    }
+
+    public String print( String str ){
+        System.out.println( "in method print is "+str );
+        return str;
+    }
+
 }
