@@ -1,19 +1,27 @@
 package gesoft.demomockito;
 
 
-import android.util.Log;
-
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.atMost;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by yhr on 2016/7/20.
@@ -122,8 +130,46 @@ public class MockitoAnnotationsTest {
         AccountData dataMock = mock(AccountData.class);
         when(dataMock.print("mock")).thenReturn("return mock");
         System.out.println(dataMock.print("mock"));
-
-
     }
+
+
+    /**
+     * 返回多个值
+     */
+    @Test
+    public void testMoreThanOneReturnValue()  {
+        Iterator i= mock(Iterator.class);
+        when(i.next()).thenReturn("Mockito").thenReturn("rocks");
+        String result=i.next()+" "+i.next();
+        //assert
+        assertEquals("Mockito rocks", result);
+    }
+
+    /**
+     * ArgumentCaptor捕获参数
+     * 初始化1
+     * @Captor private ArgumentCaptor<> mLoadTasksCallbackCaptor;
+     *
+     * 初始化2
+     * ArgumentCaptor<String> argument = ArgumentCaptor.forClass(String.class);
+     *
+     * capture() 捕获方法参数
+     * getValue() 获取方法参数值，如果方法进行了多次调用，它将返回最后一个参数值
+     * getAllValues() 方法进行多次调用后，返回多个参数值
+     */
+    @Test
+    public void testArgumentCaptor(){
+
+        accountData.print("first param");
+        accountData.print("second param");
+        ArgumentCaptor<String> argument = ArgumentCaptor.forClass(String.class);
+        /*verify(accountData).print(argument.capture());
+        assertEquals("first param", argument.getValue());*/
+
+        verify(accountData, times(2)).print(argument.capture());
+        assertEquals("second param", argument.getValue());
+    }
+
+
 
 }
