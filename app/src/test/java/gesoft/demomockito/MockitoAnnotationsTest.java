@@ -16,6 +16,7 @@ import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.atMost;
+import static org.mockito.Mockito.doCallRealMethod;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
@@ -130,6 +131,11 @@ public class MockitoAnnotationsTest {
         AccountData dataMock = mock(AccountData.class);
         when(dataMock.print("mock")).thenReturn("return mock");
         System.out.println(dataMock.print("mock"));
+
+        //调用doCallRealMethod()方法将执行目标方法体中的真实逻辑
+        doCallRealMethod().when(accountData).print("doCallRealMethod");
+        System.out.println( accountData.print("doCallRealMethod") );
+        System.out.println( accountData.print("yhr") );
     }
 
 
