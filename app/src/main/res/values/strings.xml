@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">DemoMockito</string>
     <string name="repeat">Repeat</string>
+    <string name="title_activity_tasks">TasksActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">登录</string>
+
+    <string name="act_login_hint_name">用户名</string>
+    <string name="act_login_hint_pwd">密码</string>
+
+    <string name="toast_login_empty_name">用户名不能为空</string>
+    <string name="toast_login_empty_pwd">密码不能为空</string>
+    <string name="toast_login_length_pwd">密码不能小于6位</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

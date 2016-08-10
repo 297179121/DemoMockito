@@ -1,7 +1,5 @@
 package gesoft.demomockito;
 
-import android.util.Log;
-
 /**
  * Created by yhr on 2016/7/20.
  */
@@ -29,13 +27,13 @@ public class AccountData {
     }
 
     public String log(String tag, String msg){
-        System.out.println("this is "+tag);
+        System.out.println("logic is "+tag);
         return "tag="+tag+", msg="+msg;
     }
 
-    public String print( String str ){
-        System.out.println( "in method print is "+str );
-        return str;
+    public String print( String logic ){
+        System.out.print( "logic is "+logic+"  " );
+        return logic;
     }
 
 }
